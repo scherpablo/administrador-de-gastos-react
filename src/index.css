@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Kanit";
+  src: url("./fonts/kanit/Kanit-Medium.woff2") format("woff2");
+  font-weight: normal;
+}
+
+:root {
+  font-family: "Kanit", sans-serif;
+  color-scheme: light dark;
+  color: #c3c3c3;
+  background-color: #1e1e1d;
+}
+
+/* colors */
+/* #c3c3c3; white */
+/* #e8e8e6; two white */
+/* #dd8451; orange */
+/* #8cb98c; green */
+/* #5c715c; two green */
+/* #2c2c2c; one gray */
+/* #282827; two gray */
+/* #1e1e1d; three gray */
