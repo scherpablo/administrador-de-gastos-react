@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import BudgetControlComponent from "./BudgetControlComponent";
-import BudgetComponent from "./BudgetComponent";
+import BudgetFormComponent from "./BudgetFormComponent";
 
 const HeaderComponent = ({
   budget,
@@ -20,9 +20,9 @@ const HeaderComponent = ({
       </header>
       <div className="mt-[-220px]">
         {isValidBudget ? (
-          <BudgetControlComponent />
+          <BudgetControlComponent budget={ budget }/>
         ) : (
-          <BudgetComponent
+          <BudgetFormComponent
             budget={budget}
             setBudget={setBudget}
             setIsValidBudget={setIsValidBudget}
