@@ -1,33 +1,20 @@
 /* eslint-disable react/prop-types */
-import { InvalidBudget, SuccessBudget } from "./SweetAlertsComponent";
 
 const BudgetComponent = ({
   budget,
   setBudget,
-  setIsValidBudget,
 }) => {
-  const handleBudget = (e) => {
-    e.preventDefault();
-
-    if (!budget || budget <= 0) {
-      InvalidBudget();
-      return;
-    } 
-      SuccessBudget();
-      setIsValidBudget(true);
-
-  };
+ 
 
   return (
     <>
       <div className="flex justify-center w-full">
-        <form
-          onSubmit={handleBudget}
+        <div
           className="bg-[#3c3c3c] w-[600px] h-[300px] rounded-lg p-10 shadow-lg shadow-[#c3c3c3]"
         >
           <div className="text-center h-[220px] flex flex-col justify-center my-0 m-auto">
             <label className="text-3xl text-[#c3c3c3] font-bold tracking-wider">
-              Definir Presupuesto
+              Control de Presupuesto
             </label>
             <input
               type="number"
@@ -44,7 +31,7 @@ const BudgetComponent = ({
               Añadir
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </>
   );
