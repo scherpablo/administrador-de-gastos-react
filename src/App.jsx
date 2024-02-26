@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HeaderComponent from "./components/HeaderComponent";
+import ModalComponent from "./components/ModalComponent";
 import newSpent from "/icons/new-spent.svg";
 
 const App = () => {
@@ -33,7 +34,7 @@ const App = () => {
           </div>
         )}
 
-        {modal && <h2>Desde Modal</h2>}
+        {modal && <ModalComponent setModal={ setModal }/>}
       </div>
     </>
   );
