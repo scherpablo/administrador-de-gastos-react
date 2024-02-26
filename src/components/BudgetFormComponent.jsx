@@ -20,7 +20,7 @@ const BudgetComponent = ({
 
   return (
     <>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full px-5">
         <form
           onSubmit={handleBudget}
           className="bg-[#3c3c3c] w-[600px] h-[300px] rounded-lg p-10 shadow-lg shadow-[#c3c3c3]"

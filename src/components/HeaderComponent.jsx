@@ -14,7 +14,7 @@ const HeaderComponent = ({
         className="border-b border-[#8b8a8a] border-opacity-50 
       bg-[#282827] flex flex-col items-center h-[350px]"
       >
-        <h1 className="text-6xl font-bold mt-5">
+        <h1 className="md:text-6xl sm:text-5xl text-4xl font-bold mt-5">
           Administrador de <span className="text-[#8cb98c]">Gastos</span>
         </h1>
       </header>
