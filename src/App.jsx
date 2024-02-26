@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HeaderComponent from "./components/HeaderComponent";
-import newSpent from "../public/icons/new-spent.svg";
+import newSpent from "/icons/new-spent.svg";
 
 const App = () => {
   const [budget, setBudget] = useState(0);
