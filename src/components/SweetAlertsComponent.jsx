@@ -24,5 +24,17 @@ const SuccessBudget = ()=>{
       });
 }
 
+const AmountAdd = ()=>{
+    Swal.fire({
+        icon: "error",
+        title: "Completar todos los campos",
+        text: "Todos los campos del formulario deben estar completos",
+        confirmButtonColor: "#f37574",
+        confirmButtonText: "OK",
+        footer:
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #f37574; font-weight: 700'>Pablo Scherpa</a>",
+      });
+}
 
-export { InvalidBudget, SuccessBudget };
+
+export { InvalidBudget, SuccessBudget, AmountAdd };

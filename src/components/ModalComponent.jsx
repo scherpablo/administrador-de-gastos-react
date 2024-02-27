@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { categories } from "../utils/categories";
+import { AmountAdd } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
 const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
+
   const handleModalClose = () => {
     setAnimateModal(false);
 
@@ -10,6 +16,23 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
       setModal(false);
     }, 500);
   };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if ([name, amount, category].includes("")) {
+      AmountAdd();
+      return;
+    }
+
+    const newSpent = {
+      name,
+      amount,
+      category,
+    };
+
+    console.log(newSpent);
+  }
 
   return (
     <>
@@ -24,6 +47,7 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
         </div>
 
         <form
+          onSubmit={handleFormSubmit}
           className={`flex flex-col mw-[1280px] w-[640px] my-0 mx-auto mt-[100px] opacity-0 transition-all duration-500 ease-in ${
             animateModal ? "opacity-100" : "opacity-0"
           }`}
@@ -38,6 +62,8 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
             <input
               id="name"
               type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="añade el nombnre de un gasto"
               className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d]"
             />
@@ -50,6 +76,8 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
             <input
               id="amount"
               type="number"
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
               placeholder="añade la cantidad gastada"
               className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d]"
             />
@@ -61,9 +89,11 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
             </label>
             <select
               id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d]"
             >
-              <option className="" key={ 0 } value="">--- seleccione una categoría ---</option>
+              <option key={0}>--- seleccione una categoría ---</option>
               {categories.map((category) => (
                 <option key={category.id} value={category.value}>
                   {category.label}
