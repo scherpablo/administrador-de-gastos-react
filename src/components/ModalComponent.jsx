@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { categories } from "../utils/categories";
 import modalClose from "/icons/modal-close.svg";
 
 const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
@@ -27,9 +28,15 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
             animateModal ? "opacity-100" : "opacity-0"
           }`}
         >
+          <h2 className="text-6xl text-center mb-8 font-bold">
+            Nuevo <span className="text-[#8cb98c]">Gasto</span>
+          </h2>
           <div className="flex flex-col gap-3 mb-8">
-            <legend className="text-3xl">Nombre Gasto</legend>
+            <label htmlFor="name" className="text-3xl">
+              Nombre Gasto
+            </label>
             <input
+              id="name"
               type="text"
               placeholder="añade el nombnre de un gasto"
               className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d]"
@@ -37,25 +44,40 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
           </div>
 
           <div className="flex flex-col gap-3 mb-8">
-            <legend className="text-3xl">Cantidad Gastada</legend>
+            <label htmlFor="amount" className="text-3xl">
+              Cantidad Gastada
+            </label>
             <input
+              id="amount"
               type="number"
-              placeholder="añade el nombnre de un gasto"
+              placeholder="añade la cantidad gastada"
               className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d]"
             />
           </div>
 
           <div className="flex flex-col gap-3">
-            <legend className="text-3xl">Categoría Gasto</legend>
-            <select className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d3a]">
-              <option value="" className="text-center">
-                --- seleccione una categoría ---
-              </option>
+            <label htmlFor="category" className="text-3xl">
+              Categoría Gasto
+            </label>
+            <select
+              id="category"
+              className="w-full rounded-md p-2 bg-[#c3c3c3] outline-none text-[#1e1e1d]"
+            >
+              <option className="" key={ 0 } value="">--- seleccione una categoría ---</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.value}>
+                  {category.label}
+                </option>
+              ))}
             </select>
           </div>
 
-          <div className="w-full bg-[#8cb98c] rounded-md p-2 mt-8 text-center">
-            <button className="uppercase text-xl text-[#1e1e1d]">añadir</button>
+          <div className="w-full bg-[#8cb98c] hover:bg-[#5c715c] rounded-md p-2 mt-8 text-center cursor-pointer">
+            <input
+              type="submit"
+              value="añadir"
+              className="uppercase text-xl text-[#1e1e1d] "
+            />
           </div>
         </form>
       </div>

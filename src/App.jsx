@@ -33,7 +33,7 @@ const App = () => {
               src={newSpent}
               alt="icono nuevo gasto"
               onClick={handleNewSpent}
-              className="w-14 fixed mr-10 mt-72 md:mt-80"
+              className="w-14 fixed mr-10 mt-72 md:mt-80 cursor-pointer"
             />
           </div>
         )}
