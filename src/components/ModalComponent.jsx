@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { categories } from "../utils/categories";
+import { categories } from "../utils";
 import { AmountAdd } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
-const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
+const ModalComponent = ({ setModal, animateModal, setAnimateModal, newSpent }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -24,14 +24,8 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal }) => {
       AmountAdd();
       return;
     }
-
-    const newSpent = {
-      name,
-      amount,
-      category,
-    };
-
-    console.log(newSpent);
+    
+    newSpent({ name, amount, category });
   }
 
   return (

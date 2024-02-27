@@ -16,7 +16,7 @@ const SuccessBudget = ()=>{
     Swal.fire({
         icon: "success",
         title: "Presupuesto Añadido",
-        text: "El presupuesto se añadio correctamnte",
+        text: "El presupuesto se añadió correctamnte",
         confirmButtonColor: "#8cb98c",
         confirmButtonText: "OK",
         footer:
@@ -36,5 +36,17 @@ const AmountAdd = ()=>{
       });
 }
 
+const SuccessSpent = ()=>{
+    Swal.fire({
+        icon: "success",
+        title: "Gasto Añadido",
+        text: "El gasto se añadió correctamnte",
+        confirmButtonColor: "#8cb98c",
+        confirmButtonText: "OK",
+        footer:
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #8cb98c; font-weight: 700'>Pablo Scherpa</a>",
+      });
+}
 
-export { InvalidBudget, SuccessBudget, AmountAdd };
+
+export { InvalidBudget, SuccessBudget, AmountAdd, SuccessSpent };
