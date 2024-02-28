@@ -7,7 +7,7 @@ import newSpentImg from "/icons/new-spent.svg";
 import { idGenerator } from "./utils";
 
 const App = () => {
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState("");
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
@@ -45,7 +45,7 @@ const App = () => {
 
         {isValidBudget && (
           <>
-            <main>
+            <main className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
               <ExpensesListComponent spents={spents} />
             </main>
             <div className="w-full md:min-h-[450px] flex justify-end">
@@ -53,7 +53,7 @@ const App = () => {
                 src={newSpentImg}
                 alt="icono nuevo gasto"
                 onClick={handleNewSpent}
-                className="w-14 fixed mr-10 mt-72 md:mt-80 cursor-pointer"
+                className="w-14 fixed mr-10 mt-10 md:mt-10 cursor-pointer"
               />
             </div>
           </>
