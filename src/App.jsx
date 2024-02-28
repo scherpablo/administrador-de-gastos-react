@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HeaderComponent from "./components/HeaderComponent";
+import ExpensesListComponent from "./components/ExpensesListComponent";
 import ModalComponent from "./components/ModalComponent";
 import { SuccessSpent } from "./components/SweetAlertsComponent";
 import newSpentImg from "/icons/new-spent.svg";
@@ -20,16 +21,16 @@ const App = () => {
     }, 500);
   };
 
-  const newSpent =  (spent) => {
+  const newSpent = (spent) => {
     spent.id = idGenerator();
     setSpents([...spents, spent]);
 
     SuccessSpent();
-    
-    setAnimateModal(true)
+
+    setAnimateModal(true);
     setTimeout(() => {
-      setModal(false)
-    }, 1000)
+      setModal(false);
+    }, 1000);
   };
 
   return (
@@ -43,14 +44,19 @@ const App = () => {
         />
 
         {isValidBudget && (
-          <div className="w-full md:min-h-[450px] flex justify-end">
-            <img
-              src={newSpentImg}
-              alt="icono nuevo gasto"
-              onClick={handleNewSpent}
-              className="w-14 fixed mr-10 mt-72 md:mt-80 cursor-pointer"
-            />
-          </div>
+          <>
+            <main>
+              <ExpensesListComponent spents={spents} />
+            </main>
+            <div className="w-full md:min-h-[450px] flex justify-end">
+              <img
+                src={newSpentImg}
+                alt="icono nuevo gasto"
+                onClick={handleNewSpent}
+                className="w-14 fixed mr-10 mt-72 md:mt-80 cursor-pointer"
+              />
+            </div>
+          </>
         )}
 
         {modal && (
