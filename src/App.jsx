@@ -49,12 +49,12 @@ const App = () => {
             <main className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
               <ExpensesListComponent spents={spents} />
             </main>
-            <div className="w-full md:min-h-[450px] flex justify-end">
+            <div className="w-full flex justify-end mb-10 mt-5">
               <img
                 src={newSpentImg}
                 alt="icono nuevo gasto"
                 onClick={handleNewSpent}
-                className="w-14 fixed mr-10 mt-10 md:mt-10 cursor-pointer"
+                className="w-14 cursor-pointer mr-10"
               />
             </div>
           </>
