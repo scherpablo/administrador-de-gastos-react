@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import { formatDate, categories } from "../utils";
+import { formatDate, categories, formatCurrency } from "../utils";
 
 const SpentComponent = ({ spent }) => {
   const { id, name, amount, category, date } = spent;
 
   const categoryObject = categories.find((cat) => cat.value === category);
-  console.log(categoryObject)
 
   const imageUrl = categoryObject
     ? categoryObject.image
@@ -16,7 +15,6 @@ const SpentComponent = ({ spent }) => {
       <div className="flex justify-center">
         <div className="bg-[#3c3c3c] w-[600px] rounded-lg p-8 shadow-lg shadow-[#c3c3c3] flex mb-5 gap-5">
           <div className="flex flex-1 text-white">
-            {/* <img src={ imageUrl } alt="" className="min-w-[80px] text-white" /> */}
             {imageUrl && (
               <img src={imageUrl} alt="imagen gasto" className="min-w-[80px]" />
             )}
@@ -31,8 +29,10 @@ const SpentComponent = ({ spent }) => {
               </span>
             </p>
           </div>
-          <div className="text-2xl text-[#8cb98c] flex items-center justify-end">
-            <p>${amount}</p>
+          <div className="text-2xl flex items-center justify-end">
+            <p className="shadow shadow-white p-2 rounded-md">
+              {formatCurrency(amount)}
+            </p>
           </div>
         </div>
       </div>
