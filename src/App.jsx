@@ -23,6 +23,7 @@ const App = () => {
 
   const newSpent = (spent) => {
     spent.id = idGenerator();
+    spent.date = Date.now(); /* date FNS */
     setSpents([...spents, spent]);
 
     SuccessSpent();

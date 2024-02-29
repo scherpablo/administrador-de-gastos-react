@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { formatDate } from "../utils";
+
 const SpentComponent = ({ spent }) => {
-  const { id, name, amount, category } = spent;
+  const { id, name, amount, category, date } = spent;
 
   return (
     <>
@@ -10,6 +12,15 @@ const SpentComponent = ({ spent }) => {
             <p className="uppercase">{category}</p>
             <p className="normal-case text-xl italic">{name}</p>
             <p className="">{amount}</p>
+            <p className="uppercase">
+              Agregado el:{" "}
+              <span className="font-extralight normal-case">
+                {formatDate(date)}
+              </span>
+            </p>
+          </div>
+          <div className="text-2xl text-[#8cb98c] flex items-center">
+            <p>${amount}</p>
           </div>
         </div>
       </div>

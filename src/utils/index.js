@@ -15,4 +15,15 @@ const idGenerator = () => {
     return random + date;
   };
 
-export { categories, idGenerator }; 
+  const formatDate = (date) => {
+    const newDate = new Date(date);
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+    };
+  
+    return newDate.toLocaleDateString("es-ES", options);
+  }
+
+export { categories, idGenerator, formatDate }; 
