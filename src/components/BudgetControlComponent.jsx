@@ -30,7 +30,3 @@ const BudgetComponent = ({ budget }) => {
   );
 };
 export default BudgetComponent;
-
-// outline-none focus:ring-transparent focus:border-transparent
-
-// focus:border-blue-500 focus:ring-blue-500

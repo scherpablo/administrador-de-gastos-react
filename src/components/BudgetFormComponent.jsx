@@ -1,22 +1,18 @@
 /* eslint-disable react/prop-types */
 import { InvalidBudget, SuccessBudget } from "./SweetAlertsComponent";
 
-const BudgetComponent = ({
-  budget,
-  setBudget,
-  setIsValidBudget,
-}) => {
+const BudgetComponent = ({ budget, setBudget, setIsValidBudget }) => {
   const handleBudget = (e) => {
     e.preventDefault();
 
     if (!budget || budget <= 0) {
       InvalidBudget();
       return;
-    } 
+    }
       SuccessBudget();
       setIsValidBudget(true);
-
   };
+ 
 
   return (
     <>
@@ -50,7 +46,3 @@ const BudgetComponent = ({
   );
 };
 export default BudgetComponent;
-
-// outline-none focus:ring-transparent focus:border-transparent
-
-// focus:border-blue-500 focus:ring-blue-500

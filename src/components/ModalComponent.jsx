@@ -100,7 +100,7 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal, newSpent }) =
             <input
               type="submit"
               value="añadir"
-              className="uppercase text-xl text-[#1e1e1d] "
+              className="uppercase text-xl text-[#1e1e1d]"
             />
           </div>
         </form>

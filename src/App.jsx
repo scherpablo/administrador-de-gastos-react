@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className={modal ? 'overflow-hidden h-screen' : 'flex flex-col'}>
         <HeaderComponent
           budget={budget}
           setBudget={setBudget}
