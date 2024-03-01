@@ -7,11 +7,11 @@ import newSpentImg from "/icons/new-spent.svg";
 import { idGenerator } from "./utils";
 
 const App = () => {
+  const [spents, setSpents] = useState([]);
   const [budget, setBudget] = useState("");
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
-  const [spents, setSpents] = useState([]);
 
   const handleNewSpent = () => {
     setModal(true);
@@ -36,8 +36,9 @@ const App = () => {
 
   return (
     <>
-      <div className={modal ? 'overflow-hidden h-screen' : 'flex flex-col'}>
+      <div className={modal ? "overflow-hidden h-screen" : "flex flex-col"}>
         <HeaderComponent
+          spents={spents}
           budget={budget}
           setBudget={setBudget}
           isValidBudget={isValidBudget}
@@ -62,6 +63,8 @@ const App = () => {
 
         {modal && (
           <ModalComponent
+            budget={budget}
+            spents={spents}
             setModal={setModal}
             animateModal={animateModal}
             setAnimateModal={setAnimateModal}

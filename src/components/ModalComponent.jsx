@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { categories } from "../utils";
-import { AmountAdd } from "./SweetAlertsComponent";
+import { AmountAdd, ExceededBudget } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
-const ModalComponent = ({ setModal, animateModal, setAnimateModal, newSpent }) => {
+const ModalComponent = ({
+  setModal,
+  animateModal,
+  setAnimateModal,
+  newSpent,
+  budget,
+  spents,
+}) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -17,6 +24,16 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal, newSpent }) =
     }, 500);
   };
 
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if ([name, amount, category].includes("")) {
+  //     AmountAdd();
+  //     return;
+  //   }
+
+  //   newSpent({ name, amount, category });
+  // };
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -24,9 +41,17 @@ const ModalComponent = ({ setModal, animateModal, setAnimateModal, newSpent }) =
       AmountAdd();
       return;
     }
-    
-    newSpent({ name, amount, category });
-  }
+
+    const totalUsed = spents.reduce((total, spent) => spent.amount + total, 0);
+    const newSpentAmount = Number(amount);
+
+    if (totalUsed + newSpentAmount > budget) {
+      ExceededBudget();
+      return;
+    }
+
+    newSpent({ name, amount: newSpentAmount, category });
+  };
 
   return (
     <>

@@ -48,5 +48,17 @@ const SuccessSpent = ()=>{
       });
 }
 
+const ExceededBudget = ()=>{
+    Swal.fire({
+        icon: "error",
+        title: "Pesupuestro Superado",
+        text: "No puedes agregar este gasto, superas el presupuesto disponible",
+        confirmButtonColor: "#f37574",
+        confirmButtonText: "OK",
+        footer:
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #f37574; font-weight: 700'>Pablo Scherpa</a>",
+      });
+}
 
-export { InvalidBudget, SuccessBudget, AmountAdd, SuccessSpent };
+
+export { InvalidBudget, SuccessBudget, AmountAdd, SuccessSpent, ExceededBudget };
