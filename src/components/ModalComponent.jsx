@@ -24,16 +24,6 @@ const ModalComponent = ({
     }, 500);
   };
 
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if ([name, amount, category].includes("")) {
-  //     AmountAdd();
-  //     return;
-  //   }
-
-  //   newSpent({ name, amount, category });
-  // };
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
