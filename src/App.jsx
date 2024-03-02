@@ -12,6 +12,7 @@ const App = () => {
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
+  const [editSpent, setEditSpent] = useState({});
 
   const handleNewSpent = () => {
     setModal(true);
@@ -48,7 +49,10 @@ const App = () => {
         {isValidBudget && (
           <>
             <main className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
-              <ExpensesListComponent spents={spents} />
+              <ExpensesListComponent
+                spents={spents}
+                setEditSpent={setEditSpent}
+              />
             </main>
             <div className="w-full flex justify-end mb-10 mt-5">
               <img

@@ -45,7 +45,7 @@ const ModalComponent = ({
 
   return (
     <>
-      <div className="bg-zinc-950/90 absolute top-0 left-0 right-0 bottom-0">
+      <div className="bg-zinc-950/90 w-[650px] sm:w-full absolute top-0 left-0 right-0 bottom-0">
         <div className="w-5 absolute top-10 right-14">
           <img
             src={modalClose}
@@ -57,7 +57,7 @@ const ModalComponent = ({
 
         <form
           onSubmit={handleFormSubmit}
-          className={`flex flex-col mw-[1280px] w-[640px] my-0 mx-auto mt-[100px] opacity-0 transition-all duration-500 ease-in ${
+          className={`flex flex-col max-w-[1280px] w-[640px] my-0 mx-auto md:px-0 px-10 mt-[100px] opacity-0 transition-all duration-500 ease-in ${
             animateModal ? "opacity-100" : "opacity-0"
           }`}
         >
