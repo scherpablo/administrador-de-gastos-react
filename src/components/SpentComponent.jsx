@@ -49,7 +49,7 @@ const SpentComponent = ({ spent, setEditSpent }) => {
           trailingActions={trailingActions()}
         >
           <div className="flex my-0 mx-auto bg-red-300">
-            <div className="bg-[#3c3c3c] rounded-lg p-8 shadow-lg shadow-[#c3c3c3] flex mb-5 sm:min-w-[600px]">
+            <div className="bg-[#3c3c3c] rounded-lg p-8 shadow-lg shadow-[#c3c3c3] flex mb-5 sm:min-w-[600px] gap-3">
               <div className="flex flex-1 text-white">
                 {imageUrl && (
                   <img
