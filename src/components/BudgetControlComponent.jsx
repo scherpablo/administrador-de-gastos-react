@@ -13,11 +13,6 @@ const BudgetComponent = ({ spents, budget }) => {
   useEffect(() => {
     const totalUsed = spents.reduce((total, spent) => spent.amount + total, 0);
 
-    if (totalUsed > budget) {
-      alert("El presupuesto se ha agotado");
-      return;
-    }
-
     setUsed(totalUsed);
     setAvailabe(budget - totalUsed);
   }, [spents, budget]);
