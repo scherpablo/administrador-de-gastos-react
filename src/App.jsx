@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeaderComponent from "./components/HeaderComponent";
 import ExpensesListComponent from "./components/ExpensesListComponent";
 import ModalComponent from "./components/ModalComponent";
@@ -35,9 +35,21 @@ const App = () => {
     }, 1000);
   };
 
+  useEffect(() => {
+    if (Object.keys(editSpent).length > 0) {
+      setModal(true);
+      
+      setTimeout(() => {
+        setAnimateModal(true);
+      }, 500);
+    }
+  }, [editSpent]);
+
   return (
     <>
-      <div className={modal ? "sm:overflow-hidden sm:h-screen" : "flex flex-col"}>
+      <div
+        className={modal ? "sm:overflow-hidden sm:h-screen" : "flex flex-col"}
+      >
         <HeaderComponent
           spents={spents}
           budget={budget}
