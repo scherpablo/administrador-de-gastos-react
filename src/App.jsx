@@ -16,6 +16,7 @@ const App = () => {
 
   const handleNewSpent = () => {
     setModal(true);
+    setEditSpent({});
 
     setTimeout(() => {
       setAnimateModal(true);
@@ -85,6 +86,7 @@ const App = () => {
             animateModal={animateModal}
             setAnimateModal={setAnimateModal}
             newSpent={newSpent}
+            editSpent={editSpent}
           />
         )}
       </div>

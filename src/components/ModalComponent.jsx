@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { categories } from "../utils";
 import { AmountAdd, ExceededBudget } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
@@ -11,6 +11,7 @@ const ModalComponent = ({
   newSpent,
   budget,
   spents,
+  editSpent
 }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
@@ -42,6 +43,14 @@ const ModalComponent = ({
 
     newSpent({ name, amount: newSpentAmount, category });
   };
+
+  useEffect(() => {
+    if (Object.keys(editSpent).length > 0) {
+      setName(editSpent.name);
+      setAmount(editSpent.amount);
+      setCategory(editSpent.category);
+    }
+  }, []);
 
   return (
     <>
