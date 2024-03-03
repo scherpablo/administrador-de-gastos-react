@@ -11,8 +11,12 @@ import newSpentImg from "/icons/new-spent.svg";
 import { idGenerator } from "./utils";
 
 const App = () => {
-  const [spents, setSpents] = useState([]);
-  const [budget, setBudget] = useState("");
+  const [spents, setSpents] = useState(
+    localStorage.getItem("spents")
+      ? JSON.parse(localStorage.getItem("spents"))
+      : []
+  );
+  const [budget, setBudget] = useState(Number(localStorage.getItem("budget")) ?? 0);
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
@@ -66,6 +70,19 @@ const App = () => {
       }, 500);
     }
   }, [editSpent]);
+
+  useEffect(() => {
+    localStorage.setItem("budget", budget ?? 0);
+    localStorage.setItem("spents", JSON.stringify(spents) ?? []);
+  }, [budget, spents]);
+
+  useEffect(() => {
+    const budgetLocalStorage = Number(localStorage.getItem("budget")) ?? 0;
+
+    if (budgetLocalStorage > 0) {
+      setIsValidBudget(true);
+    }
+  }, []);
 
   return (
     <>
