@@ -25,6 +25,7 @@ const App = () => {
   const [animateModal, setAnimateModal] = useState(false);
   const [editSpent, setEditSpent] = useState({});
   const [filter, setFilter] = useState("");
+  const [filterSpents, setFilterSpents] = useState([]);
 
   const handleNewSpent = () => {
     setModal(true);
@@ -80,7 +81,9 @@ const App = () => {
     localStorage.setItem("spents", JSON.stringify(spents) ?? []);
 
     if(filter) {
-      console.log("filtrando...", filter);
+      const filterSpents = spents.filter(spent => spent.category === filter);
+
+      setFilterSpents(filterSpents);
     }
   }, [budget, spents, filter]);
 
@@ -113,6 +116,8 @@ const App = () => {
                 spents={spents}
                 setEditSpent={setEditSpent}
                 deleteSpent={deleteSpent}
+                filter={filter}
+                filterSpents={filterSpents}
               />
             </main>
             <div className="w-full flex justify-end mb-10 mt-5">
