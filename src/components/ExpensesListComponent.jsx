@@ -15,7 +15,7 @@ const ExpensesListComponent = ({
           {filter ? (
             <>
               <h2 className="text-4xl py-5">
-                {filterSpents.length > 0 ? "Gastos" : "No hay gastos"}
+                {filterSpents.length ? "Gastos" : "No hay gastos en esta categoria"}
               </h2>
               {filterSpents.map((spent) => (
                 <SpentComponent
@@ -29,7 +29,7 @@ const ExpensesListComponent = ({
           ) : (
             <>
               <h2 className="text-4xl py-5">
-                {spents.length > 0 ? "Gastos" : "No hay gastos"}
+                {spents.length ? "Gastos" : "No hay gastos"}
               </h2>
               {spents.map((spent) => (
                 <SpentComponent
