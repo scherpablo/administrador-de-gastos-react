@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import HeaderComponent from "./components/HeaderComponent";
 import ExpensesListComponent from "./components/ExpensesListComponent";
+import FiltersComponent from "./components/FiltersComponent";
 import ModalComponent from "./components/ModalComponent";
 import {
   SuccessSpent,
@@ -16,11 +17,14 @@ const App = () => {
       ? JSON.parse(localStorage.getItem("spents"))
       : []
   );
-  const [budget, setBudget] = useState(Number(localStorage.getItem("budget")) ?? 0);
+  const [budget, setBudget] = useState(
+    Number(localStorage.getItem("budget")) ?? 0
+  );
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
   const [editSpent, setEditSpent] = useState({});
+  const [filter, setFilter] = useState("");
 
   const handleNewSpent = () => {
     setModal(true);
@@ -74,7 +78,11 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("budget", budget ?? 0);
     localStorage.setItem("spents", JSON.stringify(spents) ?? []);
-  }, [budget, spents]);
+
+    if(filter) {
+      console.log("filtrando...", filter);
+    }
+  }, [budget, spents, filter]);
 
   useEffect(() => {
     const budgetLocalStorage = Number(localStorage.getItem("budget")) ?? 0;
@@ -97,6 +105,9 @@ const App = () => {
 
         {isValidBudget && (
           <>
+            <div className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
+              <FiltersComponent filter={filter} setFilter={setFilter} />
+            </div>
             <main className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
               <ExpensesListComponent
                 spents={spents}
