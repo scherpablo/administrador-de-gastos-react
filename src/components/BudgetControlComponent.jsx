@@ -35,7 +35,8 @@ const BudgetComponent = ({ spents, budget }) => {
               styles={buildStyles({
                 pathColor: "#8cb98c",
                 textColor: "#8cb98c",
-                transition: "stroke-dashoffset 1s ease 0s",
+                pathTransitionDuration: 0.5,
+                textSize: "18px"
               })}
             />
           </div>
