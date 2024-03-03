@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import SpentComponent from "./SpentComponent";
 
-const ExpensesListComponent = ({ spents, setEditSpent }) => {
+const ExpensesListComponent = ({ spents, setEditSpent, deleteSpent }) => {
   return (
     <>
       <div className="bg-blue-200 mt-10 max-w-[600px] my-0 mx-auto">
@@ -15,6 +15,7 @@ const ExpensesListComponent = ({ spents, setEditSpent }) => {
               key={spent.id}
               spent={spent}
               setEditSpent={setEditSpent}
+              deleteSpent={deleteSpent}
             />
           ))}
         </div>

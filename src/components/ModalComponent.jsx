@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { categories } from "../utils";
-import { AmountAdd, EditSpent, ExceededBudget } from "./SweetAlertsComponent";
+import { AmountAdd, ExceededBudget } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
 const ModalComponent = ({

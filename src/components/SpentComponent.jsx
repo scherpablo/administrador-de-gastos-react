@@ -10,7 +10,7 @@ import "react-swipeable-list/dist/styles.css";
 import { formatDate, categories, formatCurrency } from "../utils";
 // import { SwipeEdit, SwipeDelete } from "./SweetAlertsComponent";
 
-const SpentComponent = ({ spent, setEditSpent }) => {
+const SpentComponent = ({ spent, setEditSpent, deleteSpent }) => {
   const { id, name, amount, category, date } = spent;
 
   const categoryObject = categories.find((cat) => cat.value === category);
@@ -33,7 +33,7 @@ const SpentComponent = ({ spent, setEditSpent }) => {
   const trailingActions = () => (
     <TrailingActions>
       <SwipeAction
-        onClick={() => console.log("eliminar")}
+        onClick={() => deleteSpent(id)}
         className="bg-red-500 mb-5 text-3xl text-center flex justify-center p-16 rounded-md"
       >
         Eliminar

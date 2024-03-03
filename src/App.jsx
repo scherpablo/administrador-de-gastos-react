@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import HeaderComponent from "./components/HeaderComponent";
 import ExpensesListComponent from "./components/ExpensesListComponent";
 import ModalComponent from "./components/ModalComponent";
-import { SuccessSpent, EditSpent } from "./components/SweetAlertsComponent";
+import {
+  SuccessSpent,
+  EditSpent,
+  SwipeDelete,
+  DeleteSpent,
+} from "./components/SweetAlertsComponent";
 import newSpentImg from "/icons/new-spent.svg";
 import { idGenerator } from "./utils";
 
@@ -43,6 +48,16 @@ const App = () => {
     }, 1000);
   };
 
+  const deleteSpent = (id) => {
+    SwipeDelete().then((result) => {
+      if (result.isConfirmed) {
+        const updatedSpents = spents.filter((spent) => spent.id !== id);
+        setSpents(updatedSpents);
+        DeleteSpent();
+      }
+    });
+  };
+
   useEffect(() => {
     if (Object.keys(editSpent).length > 0) {
       setModal(true);
@@ -70,6 +85,7 @@ const App = () => {
               <ExpensesListComponent
                 spents={spents}
                 setEditSpent={setEditSpent}
+                deleteSpent={deleteSpent}
               />
             </main>
             <div className="w-full flex justify-end mb-10 mt-5">
