@@ -10,7 +10,7 @@ const ExpensesListComponent = ({
 }) => {
   return (
     <>
-      <div className="bg-blue-200 mt-10 max-w-[600px] my-0 mx-auto">
+      <div className="mt-5 max-w-[600px] my-0 mx-auto">
         <div className="">
           {filter ? (
             <>
