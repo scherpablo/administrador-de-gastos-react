@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { categories } from "../utils";
-import { AmountAdd, ExceededBudget, EditSpent } from "./SweetAlertsComponent";
+import { AmountAdd, EditSpent, WarnExceededBudget } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
 const ModalComponent = ({
@@ -29,7 +29,7 @@ const ModalComponent = ({
     }, 500);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if ([name, amount, category].includes("")) {
@@ -48,10 +48,13 @@ const ModalComponent = ({
       const newTotalEditedSpent = totalUneditedSpent + newSpentAmount;
 
       if (newTotalEditedSpent > budget) {
-        ExceededBudget();
-        return;
+        const confirmed = await WarnExceededBudget();
+        if(!confirmed.value) return;
       }
-
+      // if (newTotalEditedSpent > budget) {
+      //   ExceededBudget();
+      //   return;
+      // }
       EditSpent();
 
       newSpent({
@@ -69,9 +72,10 @@ const ModalComponent = ({
       const newTotalUsed = totalUsed + newSpentAmount;
 
       if (newTotalUsed > budget) {
-        ExceededBudget();
-        return;
+        const confirmed = await WarnExceededBudget();
+        if(!confirmed.value) return;
       }
+
       newSpent({ name, amount: newSpentAmount, category, id, date });
     }
   };

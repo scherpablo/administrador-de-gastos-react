@@ -33,10 +33,11 @@ const BudgetComponent = ({ spents, budget }) => {
               value={percentage}
               text={`${percentage}%`}
               styles={buildStyles({
-                pathColor: "#8cb98c",
-                textColor: "#8cb98c",
+                // pathColor: "#8cb98c",
+                pathColor: percentage > 100 ? "#f37574" : "#8cb98c",
+                textColor: percentage > 100 ? "#f37574" : "#8cb98c",
                 pathTransitionDuration: 0.5,
-                textSize: "18px"
+                textSize: "18px",
               })}
             />
           </div>
@@ -47,9 +48,21 @@ const BudgetComponent = ({ spents, budget }) => {
                 {amountFormat(budget)}
               </span>
             </h2>
-            <h2 className="text-left text-2xl">
+            <h2
+              className={
+                available < 0
+                  ? "text-left text-2xl text-[#f37574]"
+                  : "text-left text-2xl"
+              }
+            >
               Disponible:{" "}
-              <span className="text-3xl text-[#8cb98c]">
+              <span
+                className={
+                  available < 0
+                    ? "text-3xl text-[#f37574]"
+                    : "text-3xl text-[#8cb98c]"
+                }
+              >
                 {amountFormat(available)}
               </span>
             </h2>
