@@ -90,12 +90,12 @@ const WarnExceededBudget = async () => {
         title: "Presupuesto Excedido",
         text: "¿Está seguro que desea agregar/editar el gasto?",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#8cb98c",
         cancelButtonColor: "#f37574",
         confirmButtonText: "Sí, estoy seguro",
         cancelButtonText: "Cancelar",
         footer:
-          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #3085d6; font-weight: 700'>Pablo Scherpa</a>",
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #8cb98c; font-weight: 700'>Pablo Scherpa</a>",
       });
 };
 
@@ -105,12 +105,12 @@ const SwipeEdit = async () => {
         title: "Editar Gasto",
         text: "¿Está seguro que desea editar el gasto?",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#8cb98c",
         cancelButtonColor: "#f37574",
         confirmButtonText: "Sí, editar",
         cancelButtonText: "Cancelar",
         footer:
-          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #3085d6; font-weight: 700'>Pablo Scherpa</a>",
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #8cb98c; font-weight: 700'>Pablo Scherpa</a>",
       });
 };
 
@@ -120,12 +120,12 @@ const SwipeDelete = async () => {
         title: "Eliminar Gasto",
         text: "¿Está seguro que desea eliminar el gasto?",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#8cb98c",
         cancelButtonColor: "#f37574",
         confirmButtonText: "Sí, eliminar",
         cancelButtonText: "Cancelar",
         footer:
-          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #3085d6; font-weight: 700'>Pablo Scherpa</a>",
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #8cb98c; font-weight: 700'>Pablo Scherpa</a>",
       });
 };
 
@@ -135,12 +135,12 @@ const ResetApp = async () => {
         title: "Resetear Aplicación",
         text: "¿Está seguro que desea resetear todos los datos de la App?",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#8cb98c",
         cancelButtonColor: "#f37574",
         confirmButtonText: "Sí, estoy seguro",
         cancelButtonText: "Cancelar",
         footer:
-          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #3085d6; font-weight: 700'>Pablo Scherpa</a>",
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #8cb98c; font-weight: 700'>Pablo Scherpa</a>",
       });
 };
 
