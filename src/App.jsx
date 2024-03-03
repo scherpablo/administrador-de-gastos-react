@@ -80,8 +80,8 @@ const App = () => {
     localStorage.setItem("budget", budget ?? 0);
     localStorage.setItem("spents", JSON.stringify(spents) ?? []);
 
-    if(filter) {
-      const filterSpents = spents.filter(spent => spent.category === filter);
+    if (filter) {
+      const filterSpents = spents.filter((spent) => spent.category === filter);
 
       setFilterSpents(filterSpents);
     }
@@ -100,6 +100,7 @@ const App = () => {
       <div className={modal ? "overflow-hidden h-screen" : "flex flex-col"}>
         <HeaderComponent
           spents={spents}
+          setSpents={setSpents}
           budget={budget}
           setBudget={setBudget}
           isValidBudget={isValidBudget}
@@ -108,9 +109,11 @@ const App = () => {
 
         {isValidBudget && (
           <>
-            <div className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
-              <FiltersComponent filter={filter} setFilter={setFilter} />
-            </div>
+            {spents.length > 0 ? (
+              <div className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
+                <FiltersComponent filter={filter} setFilter={setFilter} />
+              </div>
+            ) : null}
             <main className="md:w-[600px] md:my-0 md:mx-auto px-5 md:px-0">
               <ExpensesListComponent
                 spents={spents}

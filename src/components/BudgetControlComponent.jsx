@@ -1,16 +1,31 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+import { ResetApp } from "./SweetAlertsComponent";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { formatCurrency } from "../utils";
 
-const BudgetComponent = ({ spents, budget }) => {
+const BudgetComponent = ({
+  spents,
+  setSpents,
+  budget,
+  setBudget,
+  setIsValidBudget,
+}) => {
   const [available, setAvailabe] = useState(0);
   const [used, setUsed] = useState(0);
   const [percentage, setPercentage] = useState(0);
 
   const amountFormat = (amount) => {
     return formatCurrency(amount);
+  };
+
+  const handleResetApp = async () => {
+    const confirmed = await ResetApp();
+    if (!confirmed.value) return;
+    setSpents([]);
+    setBudget(0);
+    setIsValidBudget(false);
   };
 
   useEffect(() => {
@@ -33,7 +48,6 @@ const BudgetComponent = ({ spents, budget }) => {
               value={percentage}
               text={`${percentage}%`}
               styles={buildStyles({
-                // pathColor: "#8cb98c",
                 pathColor: percentage > 100 ? "#f37574" : "#8cb98c",
                 textColor: percentage > 100 ? "#f37574" : "#8cb98c",
                 pathTransitionDuration: 0.5,
@@ -42,6 +56,13 @@ const BudgetComponent = ({ spents, budget }) => {
             />
           </div>
           <div className="text-center h-[220px] flex flex-col justify-center my-0 m-auto gap-3">
+            <button
+              type="button"
+              onClick={handleResetApp}
+              className="bg-[#f37574] rounded-md p-1 uppercase text-[#3c3c3c] text-xl"
+            >
+              Resetear App
+            </button>
             <h2 className="text-left text-2xl">
               Presupuesto:{" "}
               <span className="text-3xl text-[#8cb98c]">

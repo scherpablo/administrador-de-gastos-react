@@ -129,6 +129,21 @@ const SwipeDelete = async () => {
       });
 };
 
+const ResetApp = async () => {
+    return await Swal.fire({
+        icon: "warning",
+        title: "Resetear Aplicación",
+        text: "¿Está seguro que desea resetear todos los datos de la App?",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#f37574",
+        confirmButtonText: "Sí, estoy seguro",
+        cancelButtonText: "Cancelar",
+        footer:
+          "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #3085d6; font-weight: 700'>Pablo Scherpa</a>",
+      });
+};
+
 export {
   InvalidBudget,
   SuccessBudget,
@@ -139,5 +154,6 @@ export {
   ExceededBudget,
   WarnExceededBudget,
   SwipeEdit,
-  SwipeDelete
+  SwipeDelete,
+  ResetApp
 };

@@ -4,6 +4,7 @@ import BudgetFormComponent from "./BudgetFormComponent";
 
 const HeaderComponent = ({
   spents,
+  setSpents,
   budget,
   setBudget,
   isValidBudget,
@@ -21,7 +22,13 @@ const HeaderComponent = ({
       </header>
       <div className="mt-[-220px]">
         {isValidBudget ? (
-          <BudgetControlComponent spents={spents} budget={ budget }/>
+          <BudgetControlComponent
+            spents={spents}
+            setSpents={setSpents}
+            budget={budget}
+            setBudget={setBudget}
+            setIsValidBudget={setIsValidBudget}
+          />
         ) : (
           <BudgetFormComponent
             budget={budget}
