@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { categories } from "../utils";
-import { AmountAdd, ExceededBudget } from "./SweetAlertsComponent";
+import { AmountAdd, EditSpent, ExceededBudget } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
 const ModalComponent = ({
@@ -11,11 +11,13 @@ const ModalComponent = ({
   newSpent,
   budget,
   spents,
-  editSpent
+  editSpent,
 }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
+  const [id, setId] = useState("");
 
   const handleModalClose = () => {
     setAnimateModal(false);
@@ -41,7 +43,7 @@ const ModalComponent = ({
       return;
     }
 
-    newSpent({ name, amount: newSpentAmount, category });
+    newSpent({ name, amount: newSpentAmount, category, id, date });
   };
 
   useEffect(() => {
@@ -49,6 +51,8 @@ const ModalComponent = ({
       setName(editSpent.name);
       setAmount(editSpent.amount);
       setCategory(editSpent.category);
+      setDate(editSpent.date);
+      setId(editSpent.id);
     }
   }, [editSpent]);
 
@@ -70,9 +74,15 @@ const ModalComponent = ({
             animateModal ? "opacity-100" : "opacity-0"
           }`}
         >
-          <h2 className="text-6xl text-center mb-8 font-bold">
-            Nuevo <span className="text-[#8cb98c]">Gasto</span>
-          </h2>
+          {Object.keys(editSpent).length > 0 ? (
+            <h2 className="text-6xl text-center mb-8 font-bold">
+              Editar <span className="text-[#3085d6]">Gasto</span>
+            </h2>
+          ) : (
+            <h2 className="text-6xl text-center mb-8 font-bold">
+              Nuevo <span className="text-[#8cb98c]">Gasto</span>
+            </h2>
+          )}
           <div className="flex flex-col gap-3 mb-8">
             <label htmlFor="name" className="text-3xl">
               Nombre Gasto
@@ -120,13 +130,23 @@ const ModalComponent = ({
             </select>
           </div>
 
-          <div className="w-full bg-[#8cb98c] hover:bg-[#5c715c] rounded-md p-2 mt-8 text-center cursor-pointer">
-            <input
-              type="submit"
-              value="añadir"
-              className="uppercase text-xl text-[#1e1e1d]"
-            />
-          </div>
+          {Object.keys(editSpent).length > 0 ? (
+            <div className="w-full bg-[#3085d6] hover:bg-[#5c715c] rounded-md p-2 mt-8 text-center cursor-pointer">
+              <input
+                type="submit"
+                value="guardar cambios"
+                className="uppercase text-xl text-[#1e1e1d]"
+              />
+            </div>
+          ) : (
+            <div className="w-full bg-[#8cb98c] hover:bg-[#5c715c] rounded-md p-2 mt-8 text-center cursor-pointer">
+              <input
+                type="submit"
+                value="añadir"
+                className="uppercase text-xl text-[#1e1e1d]"
+              />
+            </div>
+          )}
         </form>
       </div>
     </>

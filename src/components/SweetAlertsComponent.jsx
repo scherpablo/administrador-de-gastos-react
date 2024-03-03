@@ -48,6 +48,18 @@ const SuccessSpent = () => {
   });
 };
 
+const EditSpent = () => {
+  Swal.fire({
+    icon: "success",
+    title: "Gasto Editado",
+    text: "El gasto se editó correctamnte",
+    confirmButtonColor: "#8cb98c",
+    confirmButtonText: "OK",
+    footer:
+      "Desarrollado por <a href='https://pabloscherpa.com.ar/' target='_blank' style='cursor: pointer; color: #8cb98c; font-weight: 700'>Pablo Scherpa</a>",
+  });
+};
+
 const ExceededBudget = () => {
   Swal.fire({
     icon: "error",
@@ -95,6 +107,7 @@ export {
   SuccessBudget,
   AmountAdd,
   SuccessSpent,
+  EditSpent,
   ExceededBudget,
   SwipeEdit,
   SwipeDelete

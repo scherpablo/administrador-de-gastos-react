@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import HeaderComponent from "./components/HeaderComponent";
 import ExpensesListComponent from "./components/ExpensesListComponent";
 import ModalComponent from "./components/ModalComponent";
-import { SuccessSpent } from "./components/SweetAlertsComponent";
+import { SuccessSpent, EditSpent } from "./components/SweetAlertsComponent";
 import newSpentImg from "/icons/new-spent.svg";
 import { idGenerator } from "./utils";
 
@@ -24,11 +24,18 @@ const App = () => {
   };
 
   const newSpent = (spent) => {
-    spent.id = idGenerator();
-    spent.date = Date.now(); /* date FNS */
-    setSpents([...spents, spent]);
-
-    SuccessSpent();
+    if (spent.id) {
+      const updatedSpents = spents.map((spentState) =>
+        spentState.id === spent.id ? spent : spentState
+      );
+      setSpents(updatedSpents);
+      EditSpent();
+    } else {
+      spent.id = idGenerator();
+      spent.date = Date.now(); /* date FNS */
+      setSpents([...spents, spent]);
+      SuccessSpent();
+    }
 
     setAnimateModal(true);
     setTimeout(() => {
@@ -39,7 +46,7 @@ const App = () => {
   useEffect(() => {
     if (Object.keys(editSpent).length > 0) {
       setModal(true);
-      
+
       setTimeout(() => {
         setAnimateModal(true);
       }, 500);
@@ -48,9 +55,7 @@ const App = () => {
 
   return (
     <>
-      <div
-        className={modal ? "overflow-hidden h-screen" : "flex flex-col"}
-      >
+      <div className={modal ? "overflow-hidden h-screen" : "flex flex-col"}>
         <HeaderComponent
           spents={spents}
           budget={budget}
