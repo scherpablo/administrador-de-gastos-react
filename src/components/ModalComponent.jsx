@@ -12,6 +12,7 @@ const ModalComponent = ({
   budget,
   spents,
   editSpent,
+  setEditSpent
 }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
@@ -21,6 +22,7 @@ const ModalComponent = ({
 
   const handleModalClose = () => {
     setAnimateModal(false);
+    setEditSpent({});
 
     setTimeout(() => {
       setModal(false);

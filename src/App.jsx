@@ -35,6 +35,7 @@ const App = () => {
       );
       setSpents(updatedSpents);
       EditSpent();
+      setEditSpent({});
     } else {
       spent.id = idGenerator();
       spent.date = Date.now(); /* date FNS */
@@ -108,6 +109,7 @@ const App = () => {
             setAnimateModal={setAnimateModal}
             newSpent={newSpent}
             editSpent={editSpent}
+            setEditSpent={setEditSpent}
           />
         )}
       </div>
