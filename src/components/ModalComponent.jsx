@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { categories } from "../utils";
-import { AmountAdd, ExceededBudget } from "./SweetAlertsComponent";
+import { AmountAdd, ExceededBudget, EditSpent } from "./SweetAlertsComponent";
 import modalClose from "/icons/modal-close.svg";
 
 const ModalComponent = ({
@@ -12,7 +12,7 @@ const ModalComponent = ({
   budget,
   spents,
   editSpent,
-  setEditSpent
+  setEditSpent,
 }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
@@ -37,15 +37,43 @@ const ModalComponent = ({
       return;
     }
 
-    const totalUsed = spents.reduce((total, spent) => spent.amount + total, 0);
     const newSpentAmount = Number(amount);
 
-    if (totalUsed + newSpentAmount > budget) {
-      ExceededBudget();
-      return;
-    }
+    if (Object.keys(editSpent).length > 0) {
+      const totalUneditedSpent = spents.reduce(
+        (total, spent) =>
+          spent.id !== editSpent.id ? total + parseFloat(spent.amount) : total,
+        0
+      );
+      const newTotalEditedSpent = totalUneditedSpent + newSpentAmount;
 
-    newSpent({ name, amount: newSpentAmount, category, id, date });
+      if (newTotalEditedSpent > budget) {
+        ExceededBudget();
+        return;
+      }
+
+      EditSpent();
+
+      newSpent({
+        name,
+        amount: newSpentAmount,
+        category,
+        id: editSpent.id,
+        date,
+      });
+    } else {
+      const totalUsed = spents.reduce(
+        (total, spent) => total + parseFloat(spent.amount),
+        0
+      );
+      const newTotalUsed = totalUsed + newSpentAmount;
+
+      if (newTotalUsed > budget) {
+        ExceededBudget();
+        return;
+      }
+      newSpent({ name, amount: newSpentAmount, category, id, date });
+    }
   };
 
   useEffect(() => {

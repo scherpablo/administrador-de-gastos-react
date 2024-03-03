@@ -8,7 +8,6 @@ import {
 } from "react-swipeable-list";
 import "react-swipeable-list/dist/styles.css";
 import { formatDate, categories, formatCurrency } from "../utils";
-// import { SwipeEdit, SwipeDelete } from "./SweetAlertsComponent";
 
 const SpentComponent = ({ spent, setEditSpent, deleteSpent }) => {
   const { id, name, amount, category, date } = spent;

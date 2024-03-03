@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { formatCurrency } from "../utils";
-
-const percentage = 66;
 
 const BudgetComponent = ({ spents, budget }) => {
   const [available, setAvailabe] = useState(0);
   const [used, setUsed] = useState(0);
+  const [percentage, setPercentage] = useState(0);
 
   const amountFormat = (amount) => {
     return formatCurrency(amount);
@@ -16,9 +15,13 @@ const BudgetComponent = ({ spents, budget }) => {
 
   useEffect(() => {
     const totalUsed = spents.reduce((total, spent) => spent.amount + total, 0);
+    const totalPercentage = ((totalUsed * 100) / budget).toFixed(2);
 
     setUsed(totalUsed);
     setAvailabe(budget - totalUsed);
+    setTimeout(() => {
+      setPercentage(totalPercentage);
+    }, 2500);
   }, [spents, budget]);
 
   return (
@@ -26,7 +29,15 @@ const BudgetComponent = ({ spents, budget }) => {
       <div className="flex justify-center w-full px-5">
         <div className="bg-[#3c3c3c] w-[600px] h-[300px] rounded-lg p-10 shadow-lg shadow-[#c3c3c3] flex gap-5">
           <div className="w-1/3 flex">
-            <CircularProgressbar value={percentage} text={`${percentage}%`} />
+            <CircularProgressbar
+              value={percentage}
+              text={`${percentage}%`}
+              styles={buildStyles({
+                pathColor: "#8cb98c",
+                textColor: "#8cb98c",
+                transition: "stroke-dashoffset 1s ease 0s",
+              })}
+            />
           </div>
           <div className="text-center h-[220px] flex flex-col justify-center my-0 m-auto gap-3">
             <h2 className="text-left text-2xl">

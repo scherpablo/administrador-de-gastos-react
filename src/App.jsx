@@ -4,7 +4,6 @@ import ExpensesListComponent from "./components/ExpensesListComponent";
 import ModalComponent from "./components/ModalComponent";
 import {
   SuccessSpent,
-  EditSpent,
   SwipeDelete,
   DeleteSpent,
 } from "./components/SweetAlertsComponent";
@@ -34,7 +33,6 @@ const App = () => {
         spentState.id === spent.id ? spent : spentState
       );
       setSpents(updatedSpents);
-      EditSpent();
       setEditSpent({});
     } else {
       spent.id = idGenerator();
