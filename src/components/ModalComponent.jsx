@@ -50,7 +50,7 @@ const ModalComponent = ({
       setAmount(editSpent.amount);
       setCategory(editSpent.category);
     }
-  }, []);
+  }, [editSpent]);
 
   return (
     <>
